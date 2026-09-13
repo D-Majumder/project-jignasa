@@ -67,8 +67,8 @@ It's not just a dashboard — it's an **intelligent conversational assistant**, 
 
 1. **Clone the repository**
     ```bash
-    git clone https://github.com/D-Majumder/Project-Jignasa.git
-    cd Project-Jignasa
+    git clone https://github.com/D-Majumder/project-jignasa.git
+    cd project-jignasa
     ```
 
 2. **Start backend services (database)**
