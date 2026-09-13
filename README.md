@@ -1,13 +1,7 @@
-<h1 align="center" id="title" style="display:flex;align-items:center;justify-content:center;gap:12px;">
- 🔎 <span style="font-weight:700;">Jignasa 2.0: A Conversational SIEM Assistant</span> 🔎
-</h1>
+<h1 align="center">Jignasa 2.0: A Conversational SIEM Assistant</h1>
 
 <p align="center">
-  <i>“Your Security Operations Center, in Plain English.”</i>
-</p>
-
-<p align="center">
-  <img src="https://www.jackhenry.com/hubfs/3.21.22%20Blog%20Image.jpg" alt="Jignasa 2.0 Preview" style="max-width:100%;height:auto;border-radius:12px;box-shadow:0 0 15px rgba(0,0,0,0.25);">
+  <i>"Your Security Operations Center, in Plain English."</i>
 </p>
 
 <p align="center">
@@ -20,88 +14,71 @@
 
 ---
 
-<div align="center">
-  <img src="https://img.shields.io/badge/⚙️_Built_with_Python,_Node.js_&_Elasticsearch_-_Intuitive_and_Powerful-black?style=for-the-badge" alt="Modern Stack Badge">
-</div>
-
----
-
-## 🪄 Overview
+## Overview
 
 **Jignasa 2.0** redefines how security analysts interact with their SIEM (Security Information and Event Management) systems.
-It’s not just a dashboard — it’s an **intelligent conversational assistant**, translating plain English questions into powerful, precise database queries.
+It's not just a dashboard — it's an **intelligent conversational assistant**, translating plain English questions into powerful, precise database queries.
 
-> ✨ *Empowering security teams to find threats faster by simply asking questions, eliminating the need for complex query languages.*
-
----
-
-## 🚀 Features
-
-🗣️ **Natural Language Querying**
-Ask complex security questions in plain English, like "show failed logins from VPN in the last 24 hours."
-
-⚡ **Instant Summaries & Data Tables**
-Receive immediate, human-readable summaries and structured data tables for quick analysis.
-
-⚙️ **Transparent Query Generation**
-Inspect the exact Elasticsearch DSL query generated for any question, ensuring trust and auditability for expert analysts.
-
-🧠 **Modular NLP Core**
-Flexibly switch between a fast, offline Rule-Based Engine and a powerful, cloud-based Large Language Model (LLM) Adapter.
-
-🚀 **Containerized Deployment**
-The entire backend environment (Elasticsearch & Kibana) is managed with Docker, ensuring a consistent and easy-to-deploy setup.
-
-📊 **Automated Reporting (Future Scope)**
-Generate daily security briefings or incident reports from a single conversational prompt.
+*Empowering security teams to find threats faster by simply asking questions, eliminating the need for complex query languages.*
 
 ---
 
-## 🧰 Tech Stack
+## Features
+
+- **Natural Language Querying** — ask complex security questions in plain English, like "show failed logins from VPN in the last 24 hours."
+- **Instant Summaries & Data Tables** — receive immediate, human-readable summaries and structured data tables for quick analysis.
+- **Transparent Query Generation** — inspect the exact Elasticsearch DSL query generated for any question, ensuring trust and auditability for expert analysts.
+- **Modular NLP Core** — flexibly switch between a fast, offline rule-based engine and a cloud-based LLM adapter.
+- **Containerized Deployment** — the entire backend environment (Elasticsearch & Kibana) is managed with Docker, ensuring a consistent and easy-to-deploy setup.
+- **Automated Reporting (future scope)** — generate daily security briefings or incident reports from a single conversational prompt; not yet implemented.
+
+---
+
+## Tech Stack
 
 | Technology | Purpose |
 |-----------------------------|------------------------------------------------|
-| 🐍 **Python & Streamlit** | Core frontend framework for the interactive UI |
-| 🟩 **Node.js & TypeScript** | High-performance backend API for NLP & logic |
-| 🗃️ **Elasticsearch** | The SIEM database for storing and querying logs |
-| 🧠 **NLP Engine** | Dual parser system (Rule-based & OpenAI Adapter) |
-| 🐳 **Docker & Docker Compose**| Containerization for the database environment |
+| Python & Streamlit | Core frontend framework for the interactive UI |
+| Node.js & TypeScript | Backend API for NLP & logic |
+| Elasticsearch | The SIEM database for storing and querying logs |
+| NLP Engine | Dual parser system (rule-based & LLM adapter) |
+| Docker & Docker Compose | Containerization for the database environment |
 
 ---
 
-## 🧑‍💻 Core Functionality
+## Core Functionality
 
-### 🗣️ The User's Question
+### The user's question
 - An analyst types a question into the Streamlit web interface.
 - The frontend sends the request to the Node.js backend API.
 
-### ⚙️ The Backend's Logic
+### The backend's logic
 - The API receives the text and passes it to the active NLP module (either rule-based or LLM).
 - The NLP module parses the intent, entities (like IP addresses or usernames), and time ranges.
 - This structured data is used to generate a precise Elasticsearch DSL query.
 
-### 📊 The Data's Response
+### The data's response
 - The DSL query is executed against the Elasticsearch cluster.
 - The raw results are formatted into a summary, table, and aggregations, then sent back to the Streamlit UI for display.
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
-1.  **Clone the Repository**
+1. **Clone the repository**
     ```bash
-    git clone [https://github.com/your-username/project-jignasa-2.0.git](https://github.com/your-username/project-jignasa-2.0.git)
-    cd project-jignasa-2.0
+    git clone https://github.com/D-Majumder/Project-Jignasa.git
+    cd Project-Jignasa
     ```
 
-2.  **Start Backend Services (Database)**
+2. **Start backend services (database)**
     _This requires Docker Desktop to be running._
     ```bash
     # This will start Elasticsearch and Kibana in the background
     docker-compose up -d
     ```
 
-3.  **Run the Backend Server**
+3. **Run the backend server**
     _Open a new terminal window._
     ```bash
     cd node-backend
@@ -110,7 +87,7 @@ Generate daily security briefings or incident reports from a single conversation
     ```
     _The backend will be running on `http://localhost:8080`._
 
-4.  **Run the Frontend Application**
+4. **Run the frontend application**
     _Open a third terminal window._
     ```bash
     cd streamlit-ui
@@ -126,17 +103,14 @@ Generate daily security briefings or incident reports from a single conversation
 
 ---
 
-## 🧩 Customization Tips
+## Customization Tips
 
-- **Switch NLP Engine**: In the `node-backend/.env` file, set or remove the `OPENAI_API_KEY` variable to toggle between the LLM adapter and the default rule-based engine.
-- **Add New Rules**: Modify `node-backend/src/nlp/ruleParser.ts` to add new keywords and map them to event types.
-- **Connect to a Real Cluster**: Update the `ELASTIC_URL` and `ELASTIC_API_KEY` in `node-backend/.env` to point to your production Elasticsearch cluster.
-- **Adjust Frontend**: Modify `streamlit-ui/app_streamlit.py` to change the user interface, add new charts, or adjust the layout.
+- **Switch NLP engine**: in the `node-backend/.env` file, set or remove the `OPENAI_API_KEY` variable to toggle between the LLM adapter and the default rule-based engine.
+- **Add new rules**: modify `node-backend/src/nlp/ruleParser.ts` to add new keywords and map them to event types.
+- **Connect to a real cluster**: update the `ELASTIC_URL` and `ELASTIC_API_KEY` in `node-backend/.env` to point to your production Elasticsearch cluster.
+- **Adjust frontend**: modify `streamlit-ui/app_streamlit.py` to change the user interface, add new charts, or adjust the layout.
 
----
-
-### 🧠 Example Parser Snippet
-Here's a look at the core logic from the simple rule-based parser:
+### Example parser snippet
 
 ```typescript
 // From src/nlp/ruleParser.ts
@@ -158,14 +132,14 @@ for (const k of Object.keys(KEYWORDS)) {
 
 ---
 
-## 📜 License
+## License
 
-This project is released under the **MIT License** — free to use, modify, and share.  
-See the `LICENSE.md` file for details.
+No license file is currently present in this repository. Without one, all rights to the code are reserved by the author by default.
 
 ---
 
-👤 Author
+## Author
+
 <p align="center">
   <a href="mailto:dhrubamajumder@proton.me" target="_blank">
     <img src="https://img.shields.io/badge/Email-Dhruba%20Majumder-blue?logo=gmail" alt="Email Badge">
@@ -178,10 +152,4 @@ See the `LICENSE.md` file for details.
   </a>
 </p>
 
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=00BFA6&height=100&section=footer&text=Empowering%20analysts,%20one%20query%20at%20a%20time.&fontSize=22&fontColor=ffffff&animation=fadeIn" />
-</p>
-
-<div align="center">
-<img src="https://img.shields.io/badge/🚀_Crafted_for_Smart_India_Hackathon_2025-Innovative_&_Impactful-black?style=for-the-badge" alt="Pure Tech Badge">
-</div>
+Crafted for Smart India Hackathon 2025.
